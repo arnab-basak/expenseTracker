@@ -1,6 +1,8 @@
 # expenseTracker
 A personal Ionic-AngularFire expenseTracker mobile App
 
+This project has been scafolded using Yeoman's Ionic generator.
+
 This is a personal project to track and manage salary and the expenses occuring in a particular period of time.
 
 Please feel free to test the project and help on suggesting new features.
