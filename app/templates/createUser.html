@@ -2,24 +2,33 @@
     <ion-content class="has-header">
         <ion-list>
             <ion-item>
-                <div class="list">
-                    <label class="item item-input">
-                        <input type="email" placeholder="Username" ng-model="createUser.userName">
-                    </label>
-                </div>
-                <div class="list">
-                    <label class="item item-input">
-                        <input type="password" placeholder="password" ng-model="createUser.password">
-                    </label>
-                </div>
-                <div class="padding">
-                    <button class="button button-dark button-block" ng-click="addUser()">
-                        Create User
-                    </button>
-                    <p class="text-center">
-                        <a class="linkNoDecoration" href="#/app/login">Already A User? Login</a>
-                    </p>
-                </div>
+                <form name="createUserForm" ng-submit="addUser()" novalidate>
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="email" name="userName" placeholder="Username" ng-model="createUser.userName" required>
+                        </label>
+                    </div>
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="password" placeholder="password" ng-model="createUser.password" required>
+                        </label>
+                        <label class="item item-input">
+                            <input type="password" placeholder="Confirm Password" ng-model="createUser.confirmPassword" required>
+                        </label>
+                        <div ng-if="passwordError" ng-include="'../templates/passwordMismatchError.html'"></div>
+                        <div ng-if="createUserSuccess" ng-include="'../templates/createUserSuccess.html'"></div>
+                        <div ng-if="userExists" ng-include="'../templates/userExists.html'"></div>
+                        <div ng-if="createUserForm.userName.$touched && createUserForm.userName.$invalid" ng-include="'../templates/invalidEmail.html'"></div>
+                    </div>
+                    <div class="padding">
+                        <button class="button button-dark button-block" ng-disabled="createUserForm.$invalid">
+                            Create User
+                        </button>
+                        <p class="text-center">
+                            <a class="linkNoDecoration" href="#/app/login">Already A User? Login</a>
+                        </p>
+                    </div>
+                </form>
             </ion-item>
         </ion-list>
     </ion-content>
