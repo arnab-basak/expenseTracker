@@ -15,7 +15,7 @@ angular.module('starter')
             	console.log("User Created Successfully", userData);
             })
             .catch (function(error) {
-            	console.log("User Creating Error123", error);
+            	console.log("User Creating Error", error);
             })
         };
     });
