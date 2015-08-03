@@ -5,15 +5,17 @@ angular.module('starter')
 
         $scope.addUser = function() {
             var ref = new Firebase(constantCreateUserURL);
-            ref.createUser({
-                email: $scope.createUser.username,
+			$scope.authObj = $firebaseAuth(ref);
+
+            $scope.authObj.$createUser({
+                email: $scope.createUser.userName,
                 password: $scope.createUser.password
-            }, function(error, userData) {
-                if (error) {
-                    console.log("Error creating user:", error);
-                } else {
-                    console.log("Successfully created user account with uid:", userData.uid);
-                }
-            });
-        }
+            })
+            .then (function(userData) {
+            	console.log("User Created Successfully", userData);
+            })
+            .catch (function(error) {
+            	console.log("User Creating Error", error);
+            })
+        };
     });

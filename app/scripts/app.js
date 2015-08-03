@@ -108,5 +108,5 @@ angular.module('starter', ['ionic', 'firebase'])
     .constant('constantExpenseTypeURL', 'https://salaryexpensetracker.firebaseio.com/addNewExpenseField/')
     .constant('constantAddExpenseURL', 'https://salaryexpensetracker.firebaseio.com/addExpense/')
     .constant('constantBankDetailsURL', 'https://salaryexpensetracker.firebaseio.com/bankDetails/')
-    .constant('constantCreateUserURL', 'https://salaryexpensetracker.firebaseio.com/')
+    .constant('constantCreateUserURL', 'https://salaryexpensetracker.firebaseio.com')
     .constant('constantOnlyNumbersRegEx', /^[0-9]*(?:\.\d{1,2})?$/);
