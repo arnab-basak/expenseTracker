@@ -1,0 +1,56 @@
+<ion-view title="Add New Bank Details">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <ion-list>
+            <ion-item class="item item-divider">
+                <div>Add New Bank Details</div>
+            </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item>
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Bank Name" ng-model="addBankDetails.bankName">
+                    </label>
+                </div>
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Branch Name" ng-model="addBankDetails.branchName">
+                    </label>
+                </div>
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Account Number" ng-model="addBankDetails.accountNumber">
+                    </label>
+                </div>
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Current Amount" ng-model="addBankDetails.currentAmount">
+                    </label>
+                </div>
+                <div class="padding">
+                    <button class="button button-dark button-block" ng-click="addNewBankDetailsToDB()">
+                        Submit
+                    </button>
+                </div>
+            </ion-item>
+        </ion-list>
+        <ion-list ng-if="addBankDetails.length>0">
+            <ion-item class="item item-divider">
+                <div>Bank Account Details</div>
+            </ion-item>
+        </ion-list>
+        <ion-list>
+            <ul class="list">
+                <li class="item item-checkbox" ng-if="bankDetails.length>0" ng-repeat="data in bankDetails">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-checked="data.checked" ng-model="bankName[$index];" ng-change="bankShow($index);">
+                    </label>
+                    {{data.bankName}}
+                </li>
+            </ul>
+        </ion-list>
+    </ion-content>
+</ion-view>
