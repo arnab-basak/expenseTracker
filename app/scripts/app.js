@@ -1,11 +1,11 @@
-// Ionic Starter App
+// Ionic expenseTracker App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'expenseTracker' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
+// 'expenseTracker.controllers' is found in controllers.js
 'use strict';
-angular.module('starter', ['ionic', 'firebase'])
+angular.module('expenseTracker', ['ionic', 'firebase'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -29,13 +29,13 @@ angular.module('starter', ['ionic', 'firebase'])
             .state('app', {
                 url: '/app',
                 abstract: true,
-                templateUrl: 'templates/sideMenu.html'
+                templateUrl: 'views/sideMenu.html'
             })
             .state('app.login', {
                 url: '/login',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/login.html',
+                        templateUrl: 'views/login.html',
                         controller: 'loginCtrl'
                     }
                 }
@@ -44,8 +44,17 @@ angular.module('starter', ['ionic', 'firebase'])
                 url: '/createUser',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/createUser.html',
+                        templateUrl: 'views/createUser.html',
                         controller: 'createUserCtrl'
+                    }
+                }
+            })
+            .state('app.salaryDetails', {
+                url: '/salaryDetails',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/salaryDetails.html',
+                        controller: 'salaryDetailsCtrl'
                     }
                 }
             })
@@ -53,7 +62,7 @@ angular.module('starter', ['ionic', 'firebase'])
                 url: '/addExpense',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/addExpense.html',
+                        templateUrl: 'views/addExpense.html',
                         controller: 'addExpenseCtrl'
                     }
                 }
@@ -62,7 +71,7 @@ angular.module('starter', ['ionic', 'firebase'])
                 url: '/viewPreviousExpense',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/viewPreviousExpense.html',
+                        templateUrl: 'views/viewPreviousExpense.html',
                         controller: 'viewPreviousExpenseCtrl'
                     }
                 }
@@ -71,7 +80,7 @@ angular.module('starter', ['ionic', 'firebase'])
                 url: '/extraStuff',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/extraStuff.html'
+                        templateUrl: 'views/extraStuff.html'
                     }
                 }
             })
@@ -79,7 +88,7 @@ angular.module('starter', ['ionic', 'firebase'])
                 url: '/addNewExpenseField',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/addNewExpenseField.html',
+                        templateUrl: 'views/addNewExpenseField.html',
                         controller: 'addNewExpenseFieldCtrl'
                     }
                 }
@@ -88,7 +97,7 @@ angular.module('starter', ['ionic', 'firebase'])
                 url: '/addNewBankDetails',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/addNewBankDetails.html',
+                        templateUrl: 'views/addNewBankDetails.html',
                         controller: 'addNewBankDetailsCtrl'
                     }
                 }
@@ -97,7 +106,7 @@ angular.module('starter', ['ionic', 'firebase'])
                 url: '/currentBalInfo',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/currentBalInfo.html',
+                        templateUrl: 'views/currentBalInfo.html',
                         controller: 'currentBalInfoCtrl'
                     }
                 }

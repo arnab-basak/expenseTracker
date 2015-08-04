@@ -1,5 +1,5 @@
 'use strict';
-angular.module('starter')
+angular.module('expenseTracker')
     .controller('addExpenseCtrl', function($scope, constantOnlyNumbersRegEx, commonCalls, $filter) {
         $scope.addExpenseError = false;
         $scope.addExpenseSuccess = false;

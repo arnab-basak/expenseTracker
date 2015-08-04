@@ -1,5 +1,5 @@
 'use strict';
-angular.module('starter')
+angular.module('expenseTracker')
     .controller('addNewExpenseFieldCtrl', function($scope, $firebaseArray) {
 
         $scope.newExpenseField = {};
@@ -8,7 +8,7 @@ angular.module('starter')
         var expenseTypeLen;
 
         var checkBoxIndex;
-        var firebaseURL = new Firebase('https://salaryexpensetracker.firebaseio.com/addNewExpenseField/');
+        var firebaseURL = new Firebase('https://salaryexpenseTracker.firebaseio.com/addNewExpenseField/');
         $scope.addNewExpenseField = $firebaseArray(firebaseURL);
 
         $scope.addNewExpenseFieldToDB = function() {

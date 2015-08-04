@@ -16,14 +16,14 @@
                             <input type="{{data.inputType}}" name="{{data.expenseType}}" placeholder="{{data.expenseTypeName}}" ng-model="addExpenseTypeData[$index]" ng-pattern="onlyNumbers();">
                         </label>
                     </div>
+                    <div ng-if="addExpenseError" ng-include="'../views/templates/errorTemplate.html'"></div>
+                    <div ng-if="addExpenseSuccess" ng-include="'../views/templates/successTemplate.html'"></div>
                     <div class="padding">
                         <button class="button button-dark button-block" ng-click="addExpenseToDB()">
                             Submit
                         </button>
                     </div>
                 </form>
-                <div ng-if="addExpenseError" ng-include="'../templates/errorTemplate.html'"></div>
-                <div ng-if="addExpenseSuccess" ng-include="'../templates/successTemplate.html'"></div>
             </ion-item>
         </ion-list>
     </ion-content>

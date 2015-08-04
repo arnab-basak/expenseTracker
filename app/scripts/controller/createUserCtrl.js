@@ -1,5 +1,5 @@
 'use strict';
-angular.module('starter')
+angular.module('expenseTracker')
     .controller('createUserCtrl', function(constantCreateUserURL, $scope, $firebaseAuth) {
         $scope.createUser = {};
 
