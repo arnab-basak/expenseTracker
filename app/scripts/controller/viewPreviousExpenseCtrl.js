@@ -1,5 +1,5 @@
 'use strict';
-angular.module('starter')
+angular.module('expenseTracker')
 .controller('viewPreviousExpenseCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },

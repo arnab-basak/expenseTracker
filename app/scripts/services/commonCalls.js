@@ -1,5 +1,5 @@
 'use strict';
-angular.module('starter')
+angular.module('expenseTracker')
     .factory('commonCalls', ['$filter', 'constantExpenseTypeURL', 'constantAddExpenseURL', 'constantBankDetailsURL', '$firebaseArray', '$http', function($filter, constantExpenseTypeURL, constantAddExpenseURL, constantBankDetailsURL, $firebaseArray, $http) {
 
         var factory = {};
@@ -32,6 +32,19 @@ angular.module('starter')
             var bankDetails = $firebaseArray(fbCallURL);
 
             return bankDetails;
+        }
+
+        factory.fetchTotalBankBalance = function() {
+            var bankDetails = factory.bankDetailsFbData();
+            var totalSalary = 0;
+            
+            if (bankDetails.length > 0) {
+                for (var i=0; i<bankDetails.length; i++) {
+                    totalSalary = totalSalary + bankDetails[i].currentAmount;
+                }
+            }
+
+            return totalSalary;
         }
 
         factory.addExpenseFbData = function() {

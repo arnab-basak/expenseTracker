@@ -1,5 +1,5 @@
 'use strict';
-angular.module('starter')
+angular.module('expenseTracker')
     .controller('addNewBankDetailsCtrl', function(commonCalls,$scope, $firebaseArray) {
         $scope.addBankDetails = {};
         $scope.bankName = [];

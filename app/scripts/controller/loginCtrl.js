@@ -1,5 +1,5 @@
 'use strict';
-angular.module('starter')
+angular.module('expenseTracker')
     .controller('loginCtrl', function($scope) {
         $scope.login = {};
     });
