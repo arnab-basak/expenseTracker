@@ -4,8 +4,8 @@ angular.module('expenseTracker')
         if (sessionStorage.authenticationData === undefined) {
             $state.go('app.login');
         } else {
+            $scope.currentDate = commonCalls.fetchCurrentDate();
 
-            console.log(sessionStorage.authenticationData);
             $scope.addExpenseError = false;
             $scope.addExpenseSuccess = false;
 
@@ -21,6 +21,8 @@ angular.module('expenseTracker')
             $scope.expenseType = commonCalls.expenseTypeFbData();
 
             $scope.addExpense = commonCalls.addExpenseFbData();
+
+            $scope.bankDetails = commonCalls.bankDetailsFbData();
 
             $scope.onlyNumbers = function() {
                 if ($scope.expenseType.expenseType = 'date') {

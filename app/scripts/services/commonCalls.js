@@ -19,16 +19,14 @@ angular.module('expenseTracker')
         };
 
         factory.expenseTypeFbData = function() {
-            //var returnExpenseType;
-
-            var fbCallURL = new Firebase(constantExpenseTypeURL + sessionStorage.authenticationData + '/');
+            var fbCallURL = new Firebase(constantExpenseTypeURL);
             var expenseType = $firebaseArray(fbCallURL);
 
             return expenseType;
         };
 
         factory.bankDetailsFbData = function () {
-            var fbCallURL = new Firebase (constantBankDetailsURL + sessionStorage.authenticationData+ '/');
+            var fbCallURL = new Firebase (constantBankDetailsURL);
             var bankDetails = $firebaseArray(fbCallURL);
 
             return bankDetails;
@@ -48,7 +46,7 @@ angular.module('expenseTracker')
         }
 
         factory.addExpenseFbData = function() {
-            var fbCallURL = new Firebase(constantAddExpenseURL + sessionStorage.authenticationData+ '/');
+            var fbCallURL = new Firebase(constantAddExpenseURL);
             var addExpense = $firebaseArray(fbCallURL);
 
             return addExpense;
