@@ -19,18 +19,14 @@ angular.module('expenseTracker')
                         password: $scope.createUser.password
                     })
                     .then(function(userData) {
-                        console.log("User Created Successfully", userData);
                         $scope.userExists = false;
                         $scope.passwordError = false;
                         $scope.createUserSuccess = true;
-
-                        console.log($scope.createUserForm);
 
                         //$scope.createUserForm.$setPristine();
 
                     })
                     .catch(function(error) {
-                        console.log("User Creating Error", error);
                         $scope.passwordError = false;
                         $scope.createUserSuccess = false;
                         $scope.userExists = true;

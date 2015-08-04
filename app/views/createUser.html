@@ -10,7 +10,7 @@
                     </div>
                     <div class="list">
                         <label class="item item-input">
-                            <input type="password" placeholder="password" ng-model="createUser.password" required>
+                            <input type="password" name="password" placeholder="password" minlength = "8" ng-model="createUser.password" required>
                         </label>
                         <label class="item item-input">
                             <input type="password" placeholder="Confirm Password" ng-model="createUser.confirmPassword" required>
@@ -19,6 +19,7 @@
                         <div ng-if="createUserSuccess" ng-include="'../views/templates/createUserSuccess.html'"></div>
                         <div ng-if="userExists" ng-include="'../views/templates/userExists.html'"></div>
                         <div ng-if="createUserForm.userName.$touched && createUserForm.userName.$invalid" ng-include="'../views/templates/invalidEmail.html'"></div>
+                        <div ng-if="createUserForm.password.$touched && createUserForm.password.$invalid" ng-include="'../views/templates/invalidPassword.html'"></div>
                     </div>
                     <div class="padding">
                         <button class="button button-dark button-block" ng-disabled="createUserForm.$invalid">
