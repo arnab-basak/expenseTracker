@@ -21,14 +21,14 @@ angular.module('expenseTracker')
         factory.expenseTypeFbData = function() {
             //var returnExpenseType;
 
-            var fbCallURL = new Firebase(constantExpenseTypeURL);
+            var fbCallURL = new Firebase(constantExpenseTypeURL + sessionStorage.authenticationData + '/');
             var expenseType = $firebaseArray(fbCallURL);
 
             return expenseType;
         };
 
         factory.bankDetailsFbData = function () {
-            var fbCallURL = new Firebase (constantBankDetailsURL);
+            var fbCallURL = new Firebase (constantBankDetailsURL + sessionStorage.authenticationData+ '/');
             var bankDetails = $firebaseArray(fbCallURL);
 
             return bankDetails;
@@ -48,7 +48,7 @@ angular.module('expenseTracker')
         }
 
         factory.addExpenseFbData = function() {
-            var fbCallURL = new Firebase(constantAddExpenseURL);
+            var fbCallURL = new Firebase(constantAddExpenseURL + sessionStorage.authenticationData+ '/');
             var addExpense = $firebaseArray(fbCallURL);
 
             return addExpense;
