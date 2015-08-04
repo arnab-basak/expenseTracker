@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'expenseTracker.controllers' is found in controllers.js
 'use strict';
-angular.module('expenseTracker', ['ionic', 'firebase'])
+angular.module('expenseTracker', ['ionic', 'firebase', 'ngCookies'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {

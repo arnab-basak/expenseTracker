@@ -1,13 +1,16 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('currentBalInfoCtrl', function(commonCalls, $scope) {
-        $scope.currentBalInfo = {};
+    .controller('currentBalInfoCtrl', function($state, commonCalls, $scope) {
+        if (sessionStorage.authenticationData === undefined) {
+            $state.go('app.login');
+        } else {
+            $scope.currentBalInfo = {};
 
-        $scope.currentDate = commonCalls.fetchCurrentDate();
-        $scope.previousDate = commonCalls.fetchPreviousDate();
+            $scope.currentDate = commonCalls.fetchCurrentDate();
+            $scope.previousDate = commonCalls.fetchPreviousDate();
 
-        $scope.currentBalInfo = commonCalls.bankDetailsFbData();
-        
+            $scope.currentBalInfo = commonCalls.bankDetailsFbData();
 
+        }
 
     });

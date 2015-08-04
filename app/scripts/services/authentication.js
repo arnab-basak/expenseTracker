@@ -1,9 +1,9 @@
 'use strict';
 angular.module('expenseTracker')
-    .factory('authentication', ['$q', 'constantCreateUserURL', '$firebaseAuth', function($q, constantCreateUserURL, $firebaseAuth) {
+    .factory('authentication', ['$q', 'constantCreateUserURL', '$firebaseAuth', '$state', function($q, constantCreateUserURL, $firebaseAuth, $state) {
         var factory = {};
 
-        factory.isLoggedIn = function(userName, password) {
+        factory.login = function(userName, password) {
             var ref = new Firebase(constantCreateUserURL);
             var userData = '';
             ref.authWithPassword({
@@ -11,15 +11,18 @@ angular.module('expenseTracker')
                 password: password
             }, function(error, authData) {
                 if (error) {
-                    console.log("Login Failed!", error);
-
-                    return false;
+                    sessionStorage.error = true;
+                    return error;
                 } else {
                     userData = authData;
-                    console.log("Authenticated successfully with payload:", authData);
 
-                    return true;
+                    sessionStorage.authenticationData = authData.uid;
+                    $state.go('app.currentBalInfo');
+
+                    return authData.uid;
                 }
             });
         };
+
+        return factory;
     }]);
