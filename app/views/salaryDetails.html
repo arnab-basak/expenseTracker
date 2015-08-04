@@ -9,7 +9,7 @@
             </ion-item>
         </ion-list>
         <ion-list>
-            <form name="salaryDetailsForm" novalidate ng-submit="addSalaryDetailsToDB()">
+            <form name="salaryDetailsForm" novalidate ng-submit="addSalaryDetailsToDB()" ng-if="bankDetails.length>0">
                 <ion-item>
                     <div class="list">
                         <label class="item item-input">
@@ -34,13 +34,13 @@
                 </ion-item>
                 <ion-item>
                     <div class="padding">
-                        <button class="button button-dark button-block" ng-disabled = "salaryDetailsForm.$invalid">
+                        <button class="button button-dark button-block" ng-disabled="salaryDetailsForm.$invalid">
                             Submit
                         </button>
                     </div>
                 </ion-item>
             </form>
-            <ion-item>
+            <ion-item ng-if="bankDetails.length>0">
                 <div class="list">
                     <div>Total Amount:</div>
                 </div>
@@ -49,6 +49,12 @@
                     <div class="currentAmountWidth ellipsis">{{bank.currentAmount}}</div>
                 </div>
             </ion-item>
+            <div class="card" ng-if="bankDetails.length===0">
+                <div class="item item-text-wrap">
+                    <div ng-include="'../views/templates/noBankDetails.html'"></div>
+                </div>
+                <a class="button button-dark button-block" href="#/app/addNewBankDetails">Add New Bank Details</a>
+            </div>
         </ion-list>
     </ion-content>
 </ion-view>

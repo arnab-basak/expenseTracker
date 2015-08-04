@@ -8,7 +8,7 @@
                 <div>Today's Date: {{currentDate}}</div>
             </ion-item>
         </ion-list>
-        <ion-list>
+        <ion-list ng-if="expenseType.length>0 && bankDetails.length > 0">
             <ion-item>
                 <form name="addExpenseForm">
                     <div class="list" ng-repeat="data in expenseType track by $index" ng-if="data.checked">
@@ -25,6 +25,22 @@
                     </div>
                 </form>
             </ion-item>
+        </ion-list>
+        <ion-list ng-if="expenseType.length===0 && bankDetails.length > 0">
+            <div class="card">
+                <div class="item item-text-wrap">
+                    <div ng-include="'../views/templates/noExpenseType.html'"></div>
+                </div>
+                <a class="button button-dark button-block" href="#/app/addNewExpenseField">Add New Expense Type</a>
+            </div>
+        </ion-list>
+        <ion-list ng-if="bankDetails.length===0">
+            <div class="card">
+                <div class="item item-text-wrap">
+                    <div ng-include="'../views/templates/noBankDetails.html'"></div>
+                </div>
+                <a class="button button-dark button-block" href="#/app/addNewBankDetails">Add New Bank Details</a>
+            </div>
         </ion-list>
     </ion-content>
 </ion-view>

@@ -114,8 +114,8 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/currentBalInfo');
     })
-    .constant('constantExpenseTypeURL', 'https://salaryexpensetracker.firebaseio.com/addNewExpenseField/')
-    .constant('constantAddExpenseURL', 'https://salaryexpensetracker.firebaseio.com/addExpense/')
-    .constant('constantBankDetailsURL', 'https://salaryexpensetracker.firebaseio.com/bankDetails/')
+    .constant('constantExpenseTypeURL', 'https://salaryexpensetracker.firebaseio.com/'+ sessionStorage.authenticationData + '/addNewExpenseField/')
+    .constant('constantAddExpenseURL', 'https://salaryexpensetracker.firebaseio.com/'+ sessionStorage.authenticationData + '/addExpense/')
+    .constant('constantBankDetailsURL', 'https://salaryexpensetracker.firebaseio.com/' + sessionStorage.authenticationData + '/bankDetails/')
     .constant('constantCreateUserURL', 'https://salaryexpensetracker.firebaseio.com')
     .constant('constantOnlyNumbersRegEx', /^[0-9]*(?:\.\d{1,2})?$/);

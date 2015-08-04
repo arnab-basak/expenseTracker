@@ -1,6 +1,6 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('addNewExpenseFieldCtrl', function($state, $scope, $firebaseArray) {
+    .controller('addNewExpenseFieldCtrl', function($state, constantExpenseTypeURL, commonCalls, $scope, $firebaseArray) {
         if (sessionStorage.authenticationData === undefined) {
             $state.go('app.login');
         } else {
@@ -10,8 +10,7 @@ angular.module('expenseTracker')
             var expenseTypeLen;
 
             var checkBoxIndex;
-            var firebaseURL = new Firebase('https://salaryexpenseTracker.firebaseio.com/addNewExpenseField/');
-            $scope.addNewExpenseField = $firebaseArray(firebaseURL);
+            $scope.addNewExpenseField = commonCalls.expenseTypeFbData();
 
             $scope.addNewExpenseFieldToDB = function() {
 

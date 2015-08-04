@@ -8,7 +8,7 @@
                 <i class="fa fa-calendar ionicIconSize"></i>&nbsp;&nbsp; Today's Date: {{currentDate}}
             </div>
         </div>
-        <div class="list card" ng-repeat="currentBal in currentBalInfo">
+        <div class="list card" ng-repeat="currentBal in currentBalInfo" ng-if="currentBalInfo.length>0">
             <div class="dark item item-icon-left">
                 <i class="ionicIconSize fa fa-university"></i>
                 <span class="currentBalFontSize bankNameWidth ellipsis">{{currentBal.bankName}}</span>
@@ -19,8 +19,14 @@
                 <span class="errorSuccessTextAlign currentAmountWidth currentBalFontSize">{{currentBal.currentAmount}}</span>
             </div>
         </div>
-        <div class="card">
+        <div class="card" ng-if="currentBalInfo.length>0">
             <a class="button button-dark button-block" href="#/app/addExpense">Add New Expense</a>
+        </div>
+        <div class="card" ng-if="currentBalInfo.length===0">
+            <div class="item item-text-wrap">
+                <div ng-include="'../views/templates/noBankDetails.html'"></div>
+            </div>
+            <a class="button button-dark button-block" href="#/app/addNewBankDetails">Add New Bank Details</a>
         </div>
     </ion-content>
 </ion-view>
