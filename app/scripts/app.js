@@ -7,7 +7,7 @@
 'use strict';
 angular.module('expenseTracker', ['ionic', 'firebase'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, authentication) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -21,6 +21,10 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
             StatusBar.styleDefault();
         }
     });
+
+    $rootScope.logout = function() {
+        authentication.logout();
+    }
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -29,7 +33,7 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
             .state('app', {
                 url: '/app',
                 abstract: true,
-                templateUrl: 'views/sideMenu.html'
+                templateUrl: 'views/sideMenu.html',
             })
             .state('app.login', {
                 url: '/login',
@@ -114,8 +118,8 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/currentBalInfo');
     })
-    .constant('constantExpenseTypeURL', 'https://salaryexpensetracker.firebaseio.com/'+ sessionStorage.authenticationData + '/addNewExpenseField/')
-    .constant('constantAddExpenseURL', 'https://salaryexpensetracker.firebaseio.com/'+ sessionStorage.authenticationData + '/addExpense/')
+    .constant('constantExpenseTypeURL', 'https://salaryexpensetracker.firebaseio.com/' + sessionStorage.authenticationData + '/addNewExpenseField/')
+    .constant('constantAddExpenseURL', 'https://salaryexpensetracker.firebaseio.com/' + sessionStorage.authenticationData + '/addExpense/')
     .constant('constantBankDetailsURL', 'https://salaryexpensetracker.firebaseio.com/' + sessionStorage.authenticationData + '/bankDetails/')
     .constant('constantCreateUserURL', 'https://salaryexpensetracker.firebaseio.com')
     .constant('constantOnlyNumbersRegEx', /^[0-9]*(?:\.\d{1,2})?$/);

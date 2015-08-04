@@ -24,5 +24,12 @@ angular.module('expenseTracker')
             });
         };
 
+        factory.logout = function() {
+            var ref = new Firebase(constantCreateUserURL);
+            ref.unauth();
+            sessionStorage.removeItem("authenticationData");
+            $state.go('app.login');
+        }
+
         return factory;
     }]);

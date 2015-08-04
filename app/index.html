@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head ng-controller="appCtrl">
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
@@ -44,7 +44,7 @@
     <script src="scripts/controller/addNewBankDetailsCtrl.js"></script>
     <script src="scripts/controller/loginCtrl.js"></script>
     <script src="scripts/controller/createUserCtrl.js"></script>
-    <script src="scripts/controller/salaryDetailsCtrl.js"></script>    
+    <script src="scripts/controller/salaryDetailsCtrl.js"></script>
     <!-- endbuild -->
 </head>
 
@@ -58,7 +58,7 @@
         <a class="tab-item">
             <i class="icon ion-calendar"></i>
         </a>
-        <a class="tab-item">
+        <a class="tab-item" ng-click="logout()">
             <i class="icon ion-power"></i>
         </a>
     </ion-footer-bar>
