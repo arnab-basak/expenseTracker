@@ -4,6 +4,8 @@ angular.module('expenseTracker')
         $scope.salaryDetails = {};
         $scope.totalAmount = 0;
 
+        $scope.salaryDetailsError = false;
+
         $scope.bankDetails = commonCalls.bankDetailsFbData();
         $scope.totalAmount = commonCalls.fetchTotalBankBalance();
 
@@ -11,20 +13,23 @@ angular.module('expenseTracker')
 
         $scope.addSalaryDetailsToDB = function() {
 
-            console.log($scope.salaryDetails.accountNumber);
-
             for (var i = 0; i < $scope.bankDetails.length; i++) {
                 if ($scope.salaryDetails.accountNumber === $scope.bankDetails[i].accountNumber) {
                     var id = $scope.bankDetails[i].$id;
 
                     var updateItem = $scope.bankDetails.$getRecord(id);
-                    updateItem.currentAmount = parseFloat(updateItem.currentAmount) + parseFloat($scope.salaryDetails.salaryAmount); // updateItem.currentAmount -----> currentAmount is the field in JSON
 
-                    $scope.bankDetails.$save(updateItem);
-                    $scope.totalAmount = commonCalls.fetchTotalBankBalance();
+                    if (updateItem !== null || updateItem !== undefined || updateItem !== '') {
+                        updateItem.currentAmount = parseFloat(updateItem.currentAmount) + parseFloat($scope.salaryDetails.salaryAmount); // updateItem.currentAmount -----> currentAmount is the field in JSON
 
-                    break;
+                        $scope.bankDetails.$save(updateItem)
+                        $scope.salaryDetailsError = false;
+                        break;
+                    } else {
+                        $scope.salaryDetailsError = true;
+                    }
                 }
             }
+
         };
     });

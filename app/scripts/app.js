@@ -29,13 +29,13 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
             .state('app', {
                 url: '/app',
                 abstract: true,
-                templateUrl: 'templates/sideMenu.html'
+                templateUrl: 'views/sideMenu.html'
             })
             .state('app.login', {
                 url: '/login',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/login.html',
+                        templateUrl: 'views/login.html',
                         controller: 'loginCtrl'
                     }
                 }
@@ -44,7 +44,7 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
                 url: '/createUser',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/createUser.html',
+                        templateUrl: 'views/createUser.html',
                         controller: 'createUserCtrl'
                     }
                 }
@@ -53,7 +53,7 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
                 url: '/salaryDetails',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/salaryDetails.html',
+                        templateUrl: 'views/salaryDetails.html',
                         controller: 'salaryDetailsCtrl'
                     }
                 }
@@ -62,7 +62,7 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
                 url: '/addExpense',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/addExpense.html',
+                        templateUrl: 'views/addExpense.html',
                         controller: 'addExpenseCtrl'
                     }
                 }
@@ -71,7 +71,7 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
                 url: '/viewPreviousExpense',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/viewPreviousExpense.html',
+                        templateUrl: 'views/viewPreviousExpense.html',
                         controller: 'viewPreviousExpenseCtrl'
                     }
                 }
@@ -80,7 +80,7 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
                 url: '/extraStuff',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/extraStuff.html'
+                        templateUrl: 'views/extraStuff.html'
                     }
                 }
             })
@@ -88,7 +88,7 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
                 url: '/addNewExpenseField',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/addNewExpenseField.html',
+                        templateUrl: 'views/addNewExpenseField.html',
                         controller: 'addNewExpenseFieldCtrl'
                     }
                 }
@@ -97,7 +97,7 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
                 url: '/addNewBankDetails',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/addNewBankDetails.html',
+                        templateUrl: 'views/addNewBankDetails.html',
                         controller: 'addNewBankDetailsCtrl'
                     }
                 }
@@ -106,7 +106,7 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
                 url: '/currentBalInfo',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/currentBalInfo.html',
+                        templateUrl: 'views/currentBalInfo.html',
                         controller: 'currentBalInfoCtrl'
                     }
                 }

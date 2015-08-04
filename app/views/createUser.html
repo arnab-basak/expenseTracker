@@ -15,10 +15,10 @@
                         <label class="item item-input">
                             <input type="password" placeholder="Confirm Password" ng-model="createUser.confirmPassword" required>
                         </label>
-                        <div ng-if="passwordError" ng-include="'../templates/passwordMismatchError.html'"></div>
-                        <div ng-if="createUserSuccess" ng-include="'../templates/createUserSuccess.html'"></div>
-                        <div ng-if="userExists" ng-include="'../templates/userExists.html'"></div>
-                        <div ng-if="createUserForm.userName.$touched && createUserForm.userName.$invalid" ng-include="'../templates/invalidEmail.html'"></div>
+                        <div ng-if="passwordError" ng-include="'../views/templates/passwordMismatchError.html'"></div>
+                        <div ng-if="createUserSuccess" ng-include="'../views/templates/createUserSuccess.html'"></div>
+                        <div ng-if="userExists" ng-include="'../views/templates/userExists.html'"></div>
+                        <div ng-if="createUserForm.userName.$touched && createUserForm.userName.$invalid" ng-include="'../views/templates/invalidEmail.html'"></div>
                     </div>
                     <div class="padding">
                         <button class="button button-dark button-block" ng-disabled="createUserForm.$invalid">

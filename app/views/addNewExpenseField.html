@@ -15,13 +15,13 @@
                         <input type="text" placeholder="New Expense Field" ng-model="newExpenseField.expenseTypeName">
                     </label>
                 </div>
+                <div ng-if="addNewExpenseFieldSuccess" ng-include="'../views/templates/errorTemplate.html'"></div>
+                <div ng-if="addExpenseFieldError" ng-include="'../views/templates/successTemplate.html'"></div>
                 <div class="padding">
                     <button class="button button-dark button-block" ng-click="addNewExpenseFieldToDB()">
                         Submit
                     </button>
                 </div>
-                <div ng-if="addNewExpenseFieldSuccess" ng-include="'../templates/errorTemplate.html'"></div>
-                <div ng-if="addExpenseFieldError" ng-include="'../templates/successTemplate.html'"></div>
             </ion-item>
         </ion-list>
         <ion-list ng-if="addNewExpenseField.length>0">

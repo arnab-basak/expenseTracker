@@ -1,0 +1,54 @@
+<ion-view title="Salary Details">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <ion-list>
+            <ion-item class="item item-divider">
+                <div>Salary Details:</div>
+            </ion-item>
+        </ion-list>
+        <ion-list>
+            <form name="salaryDetailsForm" novalidate ng-submit="addSalaryDetailsToDB()">
+                <ion-item>
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="number" name="salaryAmount" placeholder="Salary Amount" ng-model="salaryDetails.salaryAmount" ng-pattern="onlyNumbers" required>
+                        </label>
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="list">
+                        <div>Select Credited Bank:</div>
+                    </div>
+                    <div class="list">
+                        <ion-radio ng-model="salaryDetails.accountNumber" ng-value="bank.accountNumber" ng-repeat="bank in bankDetails" required>
+                            <div class="bankNameWidth ellipsis">{{bank.bankName}}</div>
+                            <div class="bankAccNoWidth ellipsis">{{bank.accountNumber}}</div>
+                        </ion-radio>
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div ng-if="salaryDetailsError" ng-include="'../views/templates/errorTemplate.html'"></div>
+                    <!-- <div ng-if="selectBank" ng-include="'../views/templates/selectBank.html'"></div> -->
+                </ion-item>
+                <ion-item>
+                    <div class="padding">
+                        <button class="button button-dark button-block" ng-disabled = "salaryDetailsForm.$invalid">
+                            Submit
+                        </button>
+                    </div>
+                </ion-item>
+            </form>
+            <ion-item>
+                <div class="list">
+                    <div>Total Amount:</div>
+                </div>
+                <div class="list" ng-repeat="bank in bankDetails">
+                    <div class="bankNameWidth ellipsis">{{bank.bankName}}</div>
+                    <div class="currentAmountWidth ellipsis">{{bank.currentAmount}}</div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
