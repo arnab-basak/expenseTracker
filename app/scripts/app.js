@@ -1,5 +1,5 @@
 'use strict';
-angular.module('expenseTracker', ['ionic', 'firebase'])
+angular.module('expenseTracker', ['ionic', 'firebase', 'pickadate'])
 
 .run(function($ionicPlatform, $rootScope, authentication) {
     $ionicPlatform.ready(function() {
@@ -44,6 +44,15 @@ angular.module('expenseTracker', ['ionic', 'firebase'])
                     'menuContent': {
                         templateUrl: 'views/createUser.html',
                         controller: 'createUserCtrl'
+                    }
+                }
+            })
+            .state('app.calendar', {
+                url: '/calendar',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/calendar.html',
+                        controller: 'calendarCtrl'
                     }
                 }
             })
