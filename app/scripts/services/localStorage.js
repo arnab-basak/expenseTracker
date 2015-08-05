@@ -5,7 +5,7 @@ angular.module('expenseTracker')
     set: function(key, value) {
       $window.localStorage[key] = value;
     },
-    get: function(key, defaultValue) {
+    get: function(key) {
       return $window.localStorage[key];
     },
     setObject: function(key, value) {
@@ -14,5 +14,5 @@ angular.module('expenseTracker')
     getObject: function(key) {
       return JSON.parse($window.localStorage[key]);
     }
-  }
+  };
 }]);

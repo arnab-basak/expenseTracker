@@ -25,7 +25,7 @@ angular.module('expenseTracker')
                         if (updateItem !== null || updateItem !== undefined || updateItem !== '') {
                             updateItem.currentAmount = parseFloat(updateItem.currentAmount) + parseFloat($scope.salaryDetails.salaryAmount); // updateItem.currentAmount -----> currentAmount is the field in JSON
 
-                            $scope.bankDetails.$save(updateItem)
+                            $scope.bankDetails.$save(updateItem);
                             $scope.salaryDetailsError = false;
                             break;
                         } else {

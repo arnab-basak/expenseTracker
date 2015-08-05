@@ -18,19 +18,16 @@ angular.module('expenseTracker')
                         email: $scope.createUser.userName,
                         password: $scope.createUser.password
                     })
-                    .then(function(userData) {
+                    .then(function() {
                         $scope.userExists = false;
                         $scope.passwordError = false;
                         $scope.createUserSuccess = true;
-
-                        //$scope.createUserForm.$setPristine();
-
                     })
-                    .catch(function(error) {
+                    .catch(function() {
                         $scope.passwordError = false;
                         $scope.createUserSuccess = false;
                         $scope.userExists = true;
-                    })
+                    });
             } else {
                 $scope.createUserSuccess = false;
                 $scope.userExists = false;

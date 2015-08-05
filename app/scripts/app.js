@@ -18,12 +18,11 @@ angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker'])
 
     $rootScope.logout = function() {
         authentication.logout();
-    }
+    };
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
-
             .state('app', {
                 url: '/app',
                 abstract: true,

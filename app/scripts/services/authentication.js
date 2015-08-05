@@ -17,7 +17,7 @@ angular.module('expenseTracker')
                     userData = authData;
 
                     localStorage.set('authenticationData', authData.uid);
-                    console.log ("LOGIN DATA", localStorage.get('authenticationData'));
+                    console.log ('LOGIN DATA', localStorage.get('authenticationData'));
 
                     $state.go('app.currentBalInfo');
 
@@ -30,9 +30,9 @@ angular.module('expenseTracker')
             var ref = new Firebase(constantBaseURL);
             ref.unauth();
             localStorage.set('authenticationData', undefined);
-            console.log ("LOGOUT DATA", localStorage.get('authenticationData'));
+            console.log ('LOGOUT DATA', localStorage.get('authenticationData'));
             $state.go('app.login');
-        }
+        };
 
         return factory;
     }]);

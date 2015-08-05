@@ -28,7 +28,7 @@ angular.module('expenseTracker')
                     var updateItem = $scope.bankDetails.$getRecord(id);
                     updateItem.checked = $scope.bankName[index];
                     $scope.bankDetails.$save(updateItem);
-                };
+                }
             };
         }
     });

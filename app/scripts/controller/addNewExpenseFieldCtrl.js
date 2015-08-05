@@ -7,14 +7,11 @@ angular.module('expenseTracker')
             $scope.newExpenseField = {};
             $scope.expenseField = {};
 
-            var expenseTypeLen;
-
-            var checkBoxIndex;
             $scope.addNewExpenseField = commonCalls.expenseTypeFbData();
 
             $scope.addNewExpenseFieldToDB = function() {
 
-                $scope.newExpenseField.expenseType = $scope.newExpenseField.expenseTypeName.replace(/ +/g, "");
+                $scope.newExpenseField.expenseType = $scope.newExpenseField.expenseTypeName.replace(/ +/g, '');
 
                 $scope.addNewExpenseField.$add({
                     'expenseTypeName': $scope.newExpenseField.expenseTypeName,
@@ -31,7 +28,7 @@ angular.module('expenseTracker')
                     var updateItem = $scope.addNewExpenseField.$getRecord(id);
                     updateItem.checked = $scope.expenseField[index];
                     $scope.addNewExpenseField.$save(updateItem);
-                };
+                }
             };
         }
     });
