@@ -1,5 +1,5 @@
 'use strict';
-angular.module('expenseTracker', ['ionic', 'firebase', 'pickadate', 'ngCookies'])
+angular.module('expenseTracker', ['ionic', 'firebase', 'pickadate'])
 
 .run(function($ionicPlatform, $rootScope, localStorage, authentication) {
     $ionicPlatform.ready(function() {
