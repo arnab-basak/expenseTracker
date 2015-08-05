@@ -16,8 +16,6 @@ angular.module('expenseTracker')
 
             var validateError = true;
 
-            var DBExpenseType;
-
             $scope.expenseType = commonCalls.expenseTypeFbData();
 
             $scope.addExpense = commonCalls.addExpenseFbData();
@@ -25,8 +23,8 @@ angular.module('expenseTracker')
             $scope.bankDetails = commonCalls.bankDetailsFbData();
 
             $scope.onlyNumbers = function() {
-                if ($scope.expenseType.expenseType = 'date') {
-                    return
+                if ($scope.expenseType.expenseType === 'date') {
+                    return;
                 } else {
                     return constantOnlyNumbersRegEx;
                 }
@@ -75,11 +73,11 @@ angular.module('expenseTracker')
 
                     $scope.addExpenseError = false;
                     $scope.addExpenseSuccess = true;
-                };
+                }
 
             };
 
-            function chkAddExpenseVal() {
+            var chkAddExpenseVal = function() {
 
                 if (String($scope.addExpenseTypeData[0]) === null || String($scope.addExpenseTypeData[0]) === undefined) {
                     validateError = true;
@@ -97,16 +95,16 @@ angular.module('expenseTracker')
                         $scope.addExpenseTypeData[i] = 0;
                         validateError = false;
                     }
-                };
+                }
             };
 
-            function perDayTotal() {
+            var perDayTotal = function() {
                 var totalExpense = 0;
                 for (var i = 1; i < $scope.addExpenseTypeData.length; i++) {
                     totalExpense = totalExpense + $scope.addExpenseTypeData[i];
-                };
+                }
 
                 return totalExpense;
-            }
+            };
         }
     });
