@@ -1,7 +1,7 @@
 'use strict';
 angular.module('expenseTracker', ['ionic', 'firebase', 'pickadate'])
 
-.run(function($ionicPlatform, $rootScope, localStorage, authentication) {
+.run(function($ionicPlatform, $rootScope, authentication) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
