@@ -47,7 +47,7 @@ angular.module('expenseTracker', ['ionic', 'firebase', 'pickadate'])
                     }
                 }
             })
-            .state('app.calendar', {
+            /*.state('app.calendar', {
                 url: '/calendar',
                 views: {
                     'menuContent': {
@@ -55,7 +55,7 @@ angular.module('expenseTracker', ['ionic', 'firebase', 'pickadate'])
                         controller: 'calendarCtrl'
                     }
                 }
-            })
+            })*/
             .state('app.salaryDetails', {
                 url: '/salaryDetails',
                 views: {
