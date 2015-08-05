@@ -1,7 +1,7 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('addExpenseCtrl', function($state, $scope, constantOnlyNumbersRegEx, commonCalls, $filter) {
-        if (sessionStorage.authenticationData === undefined) {
+    .controller('addExpenseCtrl', function($state, $scope, localStorage, constantOnlyNumbersRegEx, commonCalls, $filter) {
+        if (localStorage.get('authenticationData') === 'undefined') {
             $state.go('app.login');
         } else {
             $scope.currentDate = commonCalls.fetchCurrentDate();

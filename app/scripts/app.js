@@ -120,8 +120,8 @@ angular.module('expenseTracker', ['ionic', 'firebase', 'pickadate'])
             });
         $urlRouterProvider.otherwise('/app/currentBalInfo');
     })
-    .constant('constantExpenseTypeURL', 'https://salaryexpensetracker.firebaseio.com/' + sessionStorage.authenticationData + '/addNewExpenseField/')
-    .constant('constantAddExpenseURL', 'https://salaryexpensetracker.firebaseio.com/' + sessionStorage.authenticationData + '/addExpense/')
-    .constant('constantBankDetailsURL', 'https://salaryexpensetracker.firebaseio.com/' + sessionStorage.authenticationData + '/bankDetails/')
-    .constant('constantCreateUserURL', 'https://salaryexpensetracker.firebaseio.com')
+    .constant('constantExpenseTypeURL', '/addNewExpenseField/')
+    .constant('constantAddExpenseURL', '/addExpense/')
+    .constant('constantBankDetailsURL', '/bankDetails/')
+    .constant('constantBaseURL', 'https://salaryexpensetracker.firebaseio.com/')
     .constant('constantOnlyNumbersRegEx', /^[0-9]*(?:\.\d{1,2})?$/);

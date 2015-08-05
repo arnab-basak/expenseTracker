@@ -1,10 +1,10 @@
 'use strict';
 angular.module('expenseTracker')
-    .factory('authentication', ['$q', 'constantCreateUserURL', '$firebaseAuth', '$state', function($q, constantCreateUserURL, $firebaseAuth, $state) {
+    .factory('authentication', ['localStorage','constantBaseURL', '$firebaseAuth', '$state', function(localStorage, constantBaseURL, $firebaseAuth, $state) {
         var factory = {};
 
         factory.login = function(userName, password) {
-            var ref = new Firebase(constantCreateUserURL);
+            var ref = new Firebase(constantBaseURL);
             var userData = '';
             ref.authWithPassword({
                 email: userName,
@@ -16,7 +16,9 @@ angular.module('expenseTracker')
                 } else {
                     userData = authData;
 
-                    sessionStorage.authenticationData = authData.uid;
+                    localStorage.set('authenticationData', authData.uid);
+                    console.log ("LOGIN DATA", localStorage.get('authenticationData'));
+
                     $state.go('app.currentBalInfo');
 
                     return authData.uid;
@@ -25,9 +27,10 @@ angular.module('expenseTracker')
         };
 
         factory.logout = function() {
-            var ref = new Firebase(constantCreateUserURL);
+            var ref = new Firebase(constantBaseURL);
             ref.unauth();
-            sessionStorage.removeItem("authenticationData");
+            localStorage.set('authenticationData', undefined);
+            console.log ("LOGOUT DATA", localStorage.get('authenticationData'));
             $state.go('app.login');
         }
 

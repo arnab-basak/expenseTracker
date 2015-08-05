@@ -1,7 +1,7 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('salaryDetailsCtrl', function($state, commonCalls, constantOnlyNumbersRegEx, $scope) {
-        if (sessionStorage.authenticationData === undefined) {
+    .controller('salaryDetailsCtrl', function($state, localStorage, commonCalls, constantOnlyNumbersRegEx, $scope) {
+        if (localStorage.get('authenticationData') === 'undefined') {
             $state.go('app.login');
         } else {
             $scope.salaryDetails = {};
