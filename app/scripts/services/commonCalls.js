@@ -1,6 +1,6 @@
 'use strict';
 angular.module('expenseTracker')
-    .factory('commonCalls', ['$filter', 'constantExpenseTypeURL', 'constantAddExpenseURL', 'constantBankDetailsURL', '$firebaseArray', '$http', function($filter, constantExpenseTypeURL, constantAddExpenseURL, constantBankDetailsURL, $firebaseArray, $http) {
+    .factory('commonCalls', ['$filter', 'localStorage', 'constantBaseURL', 'constantExpenseTypeURL', 'constantAddExpenseURL', 'constantBankDetailsURL', '$firebaseArray', '$http', function($filter, localStorage, constantBaseURL, constantExpenseTypeURL, constantAddExpenseURL, constantBankDetailsURL, $firebaseArray, $http) {
 
         var factory = {};
         var todayDate = new Date();
@@ -19,14 +19,15 @@ angular.module('expenseTracker')
         };
 
         factory.expenseTypeFbData = function() {
-            var fbCallURL = new Firebase(constantExpenseTypeURL);
+            var fbCallURL = new Firebase(constantBaseURL + localStorage.get('authenticationData') + constantExpenseTypeURL);
             var expenseType = $firebaseArray(fbCallURL);
 
             return expenseType;
         };
 
-        factory.bankDetailsFbData = function () {
-            var fbCallURL = new Firebase (constantBankDetailsURL);
+        factory.bankDetailsFbData = function() {
+            var fbCallURL = new Firebase(constantBaseURL + localStorage.get('authenticationData') + constantBankDetailsURL);
+            console.log ("BANK DETAILS URL", constantBaseURL + localStorage.get('authenticationData') + constantBankDetailsURL);
             var bankDetails = $firebaseArray(fbCallURL);
 
             return bankDetails;
@@ -35,9 +36,9 @@ angular.module('expenseTracker')
         factory.fetchTotalBankBalance = function() {
             var bankDetails = factory.bankDetailsFbData();
             var totalSalary = 0;
-            
+
             if (bankDetails.length > 0) {
-                for (var i=0; i<bankDetails.length; i++) {
+                for (var i = 0; i < bankDetails.length; i++) {
                     totalSalary = totalSalary + bankDetails[i].currentAmount;
                 }
             }
@@ -46,7 +47,7 @@ angular.module('expenseTracker')
         }
 
         factory.addExpenseFbData = function() {
-            var fbCallURL = new Firebase(constantAddExpenseURL);
+            var fbCallURL = new Firebase(constantBaseURL + localStorage.get('authenticationData') + constantAddExpenseURL);
             var addExpense = $firebaseArray(fbCallURL);
 
             return addExpense;

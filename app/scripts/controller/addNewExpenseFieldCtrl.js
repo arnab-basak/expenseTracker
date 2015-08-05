@@ -1,7 +1,7 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('addNewExpenseFieldCtrl', function($state, constantExpenseTypeURL, commonCalls, $scope, $firebaseArray) {
-        if (sessionStorage.authenticationData === undefined) {
+    .controller('addNewExpenseFieldCtrl', function($state, localStorage, commonCalls, $scope, $firebaseArray) {
+        if (localStorage.get('authenticationData') === 'undefined') {
             $state.go('app.login');
         } else {
             $scope.newExpenseField = {};

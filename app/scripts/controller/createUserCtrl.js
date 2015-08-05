@@ -1,6 +1,6 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('createUserCtrl', function(constantCreateUserURL, $scope, $firebaseAuth) {
+    .controller('createUserCtrl', function(constantBaseURL, $scope, $firebaseAuth) {
         $scope.createUser = {};
 
         $scope.createUserSuccess = false;
@@ -11,7 +11,7 @@ angular.module('expenseTracker')
         $scope.addUser = function() {
 
             if ($scope.createUser.password === $scope.createUser.confirmPassword) {
-                var ref = new Firebase(constantCreateUserURL);
+                var ref = new Firebase(constantBaseURL);
                 $scope.authObj = $firebaseAuth(ref);
 
                 $scope.authObj.$createUser({
