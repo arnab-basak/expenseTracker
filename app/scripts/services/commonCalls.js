@@ -1,6 +1,6 @@
 'use strict';
 angular.module('expenseTracker')
-    .factory('commonCalls', ['$filter', 'localStorage', 'constantBaseURL', 'constantExpenseTypeURL', 'constantAddExpenseURL', 'constantBankDetailsURL', '$firebaseArray', function($filter, localStorage, constantBaseURL, constantExpenseTypeURL, constantAddExpenseURL, constantBankDetailsURL, $firebaseArray) {
+    .factory('commonCalls', ['$ionicLoading', '$filter', 'localStorage', 'constantBaseURL', 'constantExpenseTypeURL', 'constantAddExpenseURL', 'constantBankDetailsURL', '$firebaseArray', function($ionicLoading, $filter, localStorage, constantBaseURL, constantExpenseTypeURL, constantAddExpenseURL, constantBankDetailsURL, $firebaseArray) {
 
         var factory = {};
         var todayDate = new Date();
@@ -27,7 +27,6 @@ angular.module('expenseTracker')
 
         factory.bankDetailsFbData = function() {
             var fbCallURL = new Firebase(constantBaseURL + localStorage.get('authenticationData') + constantBankDetailsURL);
-            console.log ('BANK DETAILS URL', constantBaseURL + localStorage.get('authenticationData') + constantBankDetailsURL);
             var bankDetails = $firebaseArray(fbCallURL);
 
             return bankDetails;
@@ -39,7 +38,7 @@ angular.module('expenseTracker')
 
             if (bankDetails.length > 0) {
                 for (var i = 0; i < bankDetails.length; i++) {
-                    totalSalary = totalSalary + bankDetails[i].currentAmount;
+                    totalSalary = totalSalary + parseFloat(bankDetails[i].currentAmount);
                 }
             }
 
