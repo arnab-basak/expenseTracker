@@ -27,7 +27,7 @@
                 </div>
                 <div class="list">
                     <label class="item item-input">
-                        <input type="text" placeholder="Current Amount" ng-model="addBankDetails.currentAmount">
+                        <input type="text" placeholder="Current Amount" ng-model="addBankDetails.currentAmount" ng-pattern="onlyNumbers">
                     </label>
                 </div>
                 <div class="padding">
@@ -45,6 +45,7 @@
         <ion-list>
             <ul class="list">
                 <li class="item item-checkbox" ng-if="bankDetails.length>0" ng-repeat="data in bankDetails">
+                    <i class="fa fa-calendar ionicIconSize"></i>&nbsp;&nbsp;
                     <label class="checkbox">
                         <input type="checkbox" ng-checked="data.checked" ng-model="bankName[$index];" ng-change="bankShow($index);">
                     </label>

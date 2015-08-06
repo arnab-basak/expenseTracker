@@ -1,11 +1,13 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('addNewBankDetailsCtrl', function($state, localStorage, commonCalls, $scope, $firebaseArray) {
+    .controller('addNewBankDetailsCtrl', function($state, constantOnlyNumbersRegEx, localStorage, commonCalls, $scope, $firebaseArray) {
         if (localStorage.get('authenticationData') === 'undefined') {
             $state.go('app.login');
         } else {
             $scope.addBankDetails = {};
             $scope.bankName = [];
+
+            $scope.onlyNumbers = constantOnlyNumbersRegEx;
 
             $scope.bankDetails = commonCalls.bankDetailsFbData();
             console.log($scope.bankDetails);

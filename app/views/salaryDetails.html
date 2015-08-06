@@ -23,8 +23,9 @@
                     </div>
                     <div class="list">
                         <ion-radio ng-model="salaryDetails.accountNumber" ng-value="bank.accountNumber" ng-repeat="bank in bankDetails" required>
-                            <div class="bankNameWidth ellipsis">{{bank.bankName}}</div>
-                            <div class="bankAccNoWidth ellipsis">{{bank.accountNumber}}</div>
+                            <i class="fa fa-calendar ionicIconSize"></i>
+                            <span class="bankNameWidth ellipsis">{{bank.bankName}}</span>
+                            <span class="bankAccNoWidth ellipsis">{{bank.accountNumber}}</span>
                         </ion-radio>
                     </div>
                 </ion-item>
@@ -45,8 +46,9 @@
                     <div>Total Amount:</div>
                 </div>
                 <div class="list" ng-repeat="bank in bankDetails">
-                    <div class="bankNameWidth ellipsis">{{bank.bankName}}</div>
-                    <div class="currentAmountWidth ellipsis">{{bank.currentAmount}}</div>
+                    <i class="fa fa-calendar ionicIconSize"></i>
+                    <span class="bankNameWidth ellipsis">{{bank.bankName}}</span>
+                    <span class="currentAmountWidth ellipsis">{{bank.currentAmount}}</span>
                 </div>
             </ion-item>
             <div class="card" ng-if="bankDetails.length===0">
