@@ -1,7 +1,7 @@
 'use strict';
 angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker'])
 
-.run(function($ionicPlatform, $rootScope, authentication) {
+.run(function($ionicPlatform, $rootScope, authentication, $ionicLoading) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -19,9 +19,26 @@ angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker'])
     $rootScope.logout = function() {
         authentication.logout();
     };
+
+    //Loading Screen - ionicLoading.show() & ionicLoading.hide(). 
+    //HTTP Interceptors for the same are coded in the angular.config section below.
+
+    //The $ionicLoading for the actual implementation during data call just needs to be injected in the
+    //service calls.
+
+    $rootScope.$on('loading:show', function() {
+        $ionicLoading.show({
+            template: 'Loading...'
+        })
+    });
+
+    $rootScope.$on('loading:hide', function() {
+        $ionicLoading.hide()
+    });
+
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         $stateProvider
             .state('app', {
                 url: '/app',
@@ -118,6 +135,20 @@ angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker'])
                 }
             });
         $urlRouterProvider.otherwise('/app/currentBalInfo');
+
+        //Loading Screen - HTTP Interceptors
+        $httpProvider.interceptors.push(function($rootScope) {
+            return {
+                request: function(config) {
+                    $rootScope.$broadcast('loading:show')
+                    return config
+                },
+                response: function(response) {
+                    $rootScope.$broadcast('loading:hide')
+                    return response
+                }
+            }
+        });
     })
     .constant('constantExpenseTypeURL', '/addNewExpenseField/')
     .constant('constantAddExpenseURL', '/addExpense/')

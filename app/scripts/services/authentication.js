@@ -1,6 +1,6 @@
 'use strict';
 angular.module('expenseTracker')
-    .factory('authentication', ['localStorage','constantBaseURL', '$firebaseAuth', '$state', function(localStorage, constantBaseURL, $firebaseAuth, $state) {
+    .factory('authentication', ['$ionicLoading','localStorage','constantBaseURL', '$firebaseAuth', '$state', function($ionicLoading, localStorage, constantBaseURL, $firebaseAuth, $state) {
         var factory = {};
 
         factory.login = function(userName, password) {
