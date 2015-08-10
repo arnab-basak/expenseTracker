@@ -1,4 +1,5 @@
 <ion-view title="Add New Expense">
+    <div class="bg"></div>
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
@@ -8,22 +9,30 @@
                 <div>Add New Expense Fields</div>
             </ion-item>
         </ion-list>
-        <ion-list>
-            <ion-item>
-                <div class="list">
-                    <label class="item item-input">
-                        <input type="text" placeholder="New Expense Field" ng-model="newExpenseField.expenseTypeName">
-                    </label>
-                </div>
-                <div ng-if="addNewExpenseFieldSuccess" ng-include="'../views/templates/errorTemplate.html'"></div>
-                <div ng-if="addExpenseFieldError" ng-include="'../views/templates/successTemplate.html'"></div>
+        <div class="card cardBoxShadowCustom">
+            <ion-list>
+                <ion-item>
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="text" placeholder="New Expense Field" ng-model="newExpenseField.expenseTypeName">
+                        </label>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div class="card cardBoxShadowCustom" ng-if="addNewExpenseFieldSuccess || addExpenseFieldError">
+            <div ng-if="addNewExpenseFieldSuccess" ng-include="'../views/templates/errorTemplate.html'"></div>
+            <div ng-if="addExpenseFieldError" ng-include="'../views/templates/successTemplate.html'"></div>
+        </div>
+        <div class="row">
+            <div class="col">
                 <div class="padding">
                     <button class="button button-dark button-block" ng-click="addNewExpenseFieldToDB()">
                         Submit
                     </button>
                 </div>
-            </ion-item>
-        </ion-list>
+            </div>
+        </div>
         <ion-list ng-if="addNewExpenseField.length>0">
             <ion-item class="item item-divider">
                 <div>Current Fields</div>
