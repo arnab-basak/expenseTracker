@@ -1,4 +1,7 @@
 node_modules
+platforms
+plugins
+resources
 app/bower_components
 www
 .idea
