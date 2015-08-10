@@ -61,3 +61,17 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+.bg {
+    background: url(../images/pop-pattern.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 96%;
+    margin: auto;
+    z-index: 0;
+    position: relative;
+    opacity: 0.8;
+}
+.cardBoxShadowCustom {
+    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.3) !important;
+}

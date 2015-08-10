@@ -15,6 +15,7 @@ angular.module('expenseTracker')
                     return error;
                 } else {
                     userData = authData;
+                    sessionStorage.error = false;
 
                     localStorage.set('authenticationData', authData.uid);
                     console.log ('LOGIN DATA', localStorage.get('authenticationData'));
