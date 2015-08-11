@@ -12,6 +12,8 @@ angular.module('expenseTracker')
                     console.log('Date not selected');
                 } else {
                     console.log('Selected date is : ', val);
+
+                    localStorage.set('selectedDate', val);
                 }
             };
         }
