@@ -1,4 +1,5 @@
 <ion-view title="Salary Details">
+    <div class="bg"></div>
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
@@ -8,40 +9,44 @@
                 <div>Salary Details:</div>
             </ion-item>
         </ion-list>
-        <ion-list>
-            <form name="salaryDetailsForm" novalidate ng-submit="addSalaryDetailsToDB()" ng-if="bankDetails.length>0">
-                <ion-item>
-                    <div class="list">
-                        <label class="item item-input">
-                            <input type="number" name="salaryAmount" placeholder="Salary Amount" ng-model="salaryDetails.salaryAmount" ng-pattern="onlyNumbers" required>
-                        </label>
-                    </div>
-                </ion-item>
-                <ion-item>
-                    <div class="list">
-                        <div>Select Credited Bank:</div>
-                    </div>
-                    <div class="list">
-                        <ion-radio ng-model="salaryDetails.accountNumber" ng-value="bank.accountNumber" ng-repeat="bank in bankDetails" required>
-                            <i class="fa fa-calendar ionicIconSize"></i>
-                            <span class="bankNameWidth ellipsis">{{bank.bankName}}</span>
-                            <span class="bankAccNoWidth ellipsis">{{bank.accountNumber}}</span>
-                        </ion-radio>
-                    </div>
-                </ion-item>
-                <ion-item>
-                    <div ng-if="salaryDetailsError" ng-include="'../views/templates/errorTemplate.html'"></div>
-                    <!-- <div ng-if="selectBank" ng-include="'../views/templates/selectBank.html'"></div> -->
-                </ion-item>
-                <ion-item>
-                    <div class="padding">
-                        <button class="button button-dark button-block" ng-disabled="salaryDetailsForm.$invalid">
-                            Submit
-                        </button>
-                    </div>
-                </ion-item>
-            </form>
-            <ion-item ng-if="bankDetails.length>0">
+        <div class="card cardBoxShadowCustom" ng-if="bankDetails.length>0">
+            <ion-list>
+                <form name="salaryDetailsForm" novalidate ng-submit="addSalaryDetailsToDB()">
+                    <ion-item>
+                        <div class="list">
+                            <label class="item item-input">
+                                <input type="number" name="salaryAmount" placeholder="Salary Amount" ng-model="salaryDetails.salaryAmount" ng-pattern="onlyNumbers" required>
+                            </label>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        <div class="list">
+                            <div>Select Credited Bank:</div>
+                        </div>
+                        <div class="list">
+                            <ion-radio name = "bankDetails" ng-model="salaryDetails.accountNumber" ng-value="bank.accountNumber" ng-repeat="bank in bankDetails" required>
+                                <i class="fa fa-calendar ionicIconSize"></i>
+                                <span class="bankNameWidth ellipsis">{{bank.bankName}}</span>
+                                <span class="bankAccNoWidth ellipsis">{{bank.accountNumber}}</span>
+                            </ion-radio>
+                        </div>
+                    </ion-item>
+                    <ion-item ng-if="salaryDetailsError">
+                        <div ng-if="salaryAmountError" ng-include="'../views/templates/salaryAmountError.html'"></div>
+                        <div ng-if="accountNumberError" ng-include="'../views/templates/selectBank.html'"></div>
+                    </ion-item>
+                    <ion-item>
+                        <div class="padding">
+                            <button class="button button-dark button-block">
+                                Submit
+                            </button>
+                        </div>
+                    </ion-item>
+                </form>
+            </ion-list>
+        </div>
+        <div class="card cardBoxShadowCustom" ng-if="bankDetails.length>0">
+            <ion-item>
                 <div class="list">
                     <div>Total Amount:</div>
                 </div>
@@ -51,12 +56,16 @@
                     <span class="currentAmountWidth ellipsis">{{bank.currentAmount}}</span>
                 </div>
             </ion-item>
-            <div class="card" ng-if="bankDetails.length===0">
-                <div class="item item-text-wrap">
-                    <div ng-include="'../views/templates/noBankDetails.html'"></div>
-                </div>
-                <a class="button button-dark button-block" href="#/app/addNewBankDetails">Add New Bank Details</a>
+        </div>
+        <div class="card cardBoxShadowCustom" ng-if="bankDetails.length===0">
+            <div class="item item-text-wrap">
+                <div ng-include="'../views/templates/noBankDetails.html'"></div>
             </div>
-        </ion-list>
+        </div>
+        <div class="row" ng-if="bankDetails.length===0">
+            <div class="col">
+                <a class="button button-royal button-block" href="#/app/addNewBankDetails">Add New Bank Details</a>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
