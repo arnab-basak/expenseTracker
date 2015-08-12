@@ -15,6 +15,11 @@
                 <span class="currentBalFontSize branchNameWidth currentBalDisplay">{{modalBankInfo.branchName}}</span>
             </div>
             <div class="dark item item-icon-left">
+                <i class="fa fa-credit-card ionicIconSize"></i>
+                <span class="bankTypeTitleWidth currentBalDisplay">Bank Type: </span>
+                <span class="bankTypeWidth currentBalDisplay">{{modalBankInfo.bankType}}</span>
+            </div>
+            <div class="dark item item-icon-left">
                 <i class="ionicIconSize iconShift fa fa-inr"></i>
                 <span class="errorSuccessTextAlign currentBalDisplay currentAmountWidth currentBalFontSize">{{modalBankInfo.currentAmount}}</span>
             </div>

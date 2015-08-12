@@ -1,5 +1,5 @@
 'use strict';
-angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker'])
+angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker', 'ui.mask'])
 
 .run(function($ionicPlatform, $rootScope, authentication, $ionicLoading) {
     $ionicPlatform.ready(function() {
@@ -150,8 +150,9 @@ angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker'])
             }
         });
     })
-    .constant('constantExpenseTypeURL', '/addNewExpenseField/')
-    .constant('constantAddExpenseURL', '/addExpense/')
-    .constant('constantBankDetailsURL', '/bankDetails/')
-    .constant('constantBaseURL', 'https://salaryexpensetracker.firebaseio.com/')
-    .constant('constantOnlyNumbersRegEx', /^[0-9]*(?:\.\d{1,2})?$/);
+    .constant('EXPENSE_TYPE_URL', '/addNewExpenseField/')
+    .constant('ADD_EXPENSE_URL', '/addExpense/')
+    .constant('BANK_DETAILS_URL', '/bankDetails/')
+    .constant('BASE_URL', 'https://salaryexpensetracker.firebaseio.com/')
+    .constant('ONLY_NUMBERS_REGEX', /^[0-9]*(?:\.\d{1,2})?$/)
+    .constant('BANK_TYPE_URL', '../properties/bankType.json');

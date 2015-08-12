@@ -1,6 +1,6 @@
 'use strict';
 angular.module('expenseTracker')
-    .factory('commonCalls', ['$ionicLoading', '$filter', 'localStorage', 'constantBaseURL', 'constantExpenseTypeURL', 'constantAddExpenseURL', 'constantBankDetailsURL', '$firebaseArray', function($ionicLoading, $filter, localStorage, constantBaseURL, constantExpenseTypeURL, constantAddExpenseURL, constantBankDetailsURL, $firebaseArray) {
+    .factory('commonCalls', ['$ionicLoading', '$filter', 'localStorage', 'BASE_URL', 'EXPENSE_TYPE_URL', 'ADD_EXPENSE_URL', 'BANK_DETAILS_URL', 'BANK_TYPE_URL', '$firebaseArray', '$http', function($ionicLoading, $filter, localStorage, BASE_URL, EXPENSE_TYPE_URL, ADD_EXPENSE_URL, BANK_DETAILS_URL, BANK_TYPE_URL, $firebaseArray, $http) {
 
         var factory = {};
         var todayDate = new Date();
@@ -19,14 +19,14 @@ angular.module('expenseTracker')
         };
 
         factory.expenseTypeFbData = function() {
-            var fbCallURL = new Firebase(constantBaseURL + localStorage.get('authenticationData') + constantExpenseTypeURL);
+            var fbCallURL = new Firebase(BASE_URL + localStorage.get('authenticationData') + EXPENSE_TYPE_URL);
             var expenseType = $firebaseArray(fbCallURL);
 
             return expenseType;
         };
 
         factory.bankDetailsFbData = function() {
-            var fbCallURL = new Firebase(constantBaseURL + localStorage.get('authenticationData') + constantBankDetailsURL);
+            var fbCallURL = new Firebase(BASE_URL + localStorage.get('authenticationData') + BANK_DETAILS_URL);
             var bankDetails = $firebaseArray(fbCallURL);
 
             return bankDetails;
@@ -46,10 +46,21 @@ angular.module('expenseTracker')
         };
 
         factory.addExpenseFbData = function() {
-            var fbCallURL = new Firebase(constantBaseURL + localStorage.get('authenticationData') + constantAddExpenseURL);
+            var fbCallURL = new Firebase(BASE_URL + localStorage.get('authenticationData') + ADD_EXPENSE_URL);
             var addExpense = $firebaseArray(fbCallURL);
 
             return addExpense;
+        };
+
+        factory.bankType = function() {
+            var bankType={};
+            $http.get(BANK_TYPE_URL).success(function(response) {
+                bankType.type = response;
+                console.log(bankType);
+            });
+
+
+            return bankType;
         };
 
         return factory;

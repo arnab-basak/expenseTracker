@@ -12,7 +12,7 @@ angular.module('expenseTracker')
 
             $scope.currentBalInfo = commonCalls.bankDetailsFbData();
 
-            $ionicModal.fromTemplateUrl('../views/templates/modalTemplates/bankDetails.html', {
+            $ionicModal.fromTemplateUrl('../views/templates/modalTemplates/bankDetails.tpl', {
                 scope: $scope,
                 animation: 'slide-in-up'
             }).then(function(modal) {
@@ -32,7 +32,7 @@ angular.module('expenseTracker')
             $scope.$on('$destroy', function() {
                 $scope.modal.remove();
             });
-
+ 
         }
 
     });

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('salaryDetailsCtrl', function($state, localStorage, commonCalls, constantOnlyNumbersRegEx, $scope) {
+    .controller('salaryDetailsCtrl', function($state, localStorage, commonCalls, ONLY_NUMBERS_REGEX, $scope) {
         if (localStorage.get('authenticationData') === 'undefined') {
             $state.go('app.login');
         } else {
@@ -12,7 +12,7 @@ angular.module('expenseTracker')
             $scope.bankDetails = commonCalls.bankDetailsFbData();
             $scope.totalAmount = commonCalls.fetchTotalBankBalance();
 
-            $scope.onlyNumbers = constantOnlyNumbersRegEx;
+            $scope.onlyNumbers = ONLY_NUMBERS_REGEX;
 
             $scope.addSalaryDetailsToDB = function() {
 
