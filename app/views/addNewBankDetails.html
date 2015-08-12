@@ -24,8 +24,16 @@
                             </label>
                         </div>
                         <div class="list">
+                            <label class="item item-input">Select Bank Type: </label>
+                            <ion-radio name="bankType" ng-model="addBankDetails.bankType" ng-value="bank.bankType" ng-repeat="bank in bankType.type" required>
+                                <i class="fa fa-credit-card ionicIconSize"></i>
+                                <span class="bankNameWidth ellipsis">{{bank.bankType}}</span>
+                            </ion-radio>
+                        </div>
+                        <div class="list" ng-if="addBankDetails.bankType">
                             <label class="item item-input">
-                                <input type="text" placeholder="Account Number" ng-model="addBankDetails.accountNumber" ng-pattern="onlyNumbers" required>
+                                <input type="text" placeholder="Account Number" ng-model="addBankDetails.accountNumber" ng-pattern="onlyNumbers" required ng-if="addBankDetails.bankType === 'Debit'">
+                                <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX" ng-model="addBankDetails.accountNumber" ng-if="addBankDetails.bankType === 'Credit'" ui-mask="9999-9999-9999-9999" model-view-value="true" ng-pattern="onlyNumbers" required>
                             </label>
                         </div>
                         <div class="list">
@@ -45,13 +53,15 @@
         <div class="row">
             <div class="col">
                 <div class="padding">
-                    <button class="button button-royal button-block" ng-click="addNewBankDetailsToDB()">
+                    <button class="button button-royal button-block" ng-click="confirmBankDetails()">
                         Submit
                     </button>
                 </div>
             </div>
         </div>
-        <ion-list ng-if="bankDetails.length>0">
+
+        <!-- BANK DETAILS LIST THAT ARE ADDED -->
+        <!-- <ion-list ng-if="bankDetails.length>0">
             <ion-item class="item item-divider">
                 <div>Bank Account Details</div>
             </ion-item>
@@ -66,6 +76,6 @@
                     {{data.bankName}}
                 </li>
             </ul>
-        </ion-list>
+        </ion-list> -->
     </ion-content>
 </ion-view>

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('addExpenseCtrl', function($state, $scope, localStorage, constantOnlyNumbersRegEx, commonCalls, $filter) {
+    .controller('addExpenseCtrl', function($state, $scope, localStorage, ONLY_NUMBERS_REGEX, commonCalls, $filter) {
         if (localStorage.get('authenticationData') === 'undefined') {
             $state.go('app.login');
         } else {
@@ -26,7 +26,7 @@ angular.module('expenseTracker')
                 if ($scope.expenseType.expenseType === 'date') {
                     return;
                 } else {
-                    return constantOnlyNumbersRegEx;
+                    return ONLY_NUMBERS_REGEX;
                 }
             };
 
