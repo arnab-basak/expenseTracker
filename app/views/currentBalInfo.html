@@ -1,5 +1,5 @@
 <ion-view title="Current Balance">
-<div class="bg"></div>
+    <div class="bg"></div>
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
@@ -9,15 +9,15 @@
                 <i class="fa fa-calendar ionicIconSize"></i>&nbsp;&nbsp; Today's Date: {{currentDate}}
             </div>
         </div>
-        <div class="list card cardBoxShadowCustom" ng-repeat="currentBal in currentBalInfo" ng-if="currentBalInfo.length>0">
+        <div class="list card cardBoxShadowCustom" ng-repeat="currentBal in currentBalInfo track by $index" ng-if="currentBalInfo.length>0" ng-click="openModal($index)">
             <div class="dark item item-icon-left">
                 <i class="ionicIconSize fa fa-university"></i>
-                <span class="currentBalFontSize bankNameWidth ellipsis">{{currentBal.bankName}}</span>
-                <span class="currentBalFontSize bankAccNoWidth ellipsis">{{currentBal.accountNumber}}</span>
+                <span class="currentBalFontSize bankNameWidth currentBalDisplay ellipsis">{{currentBal.bankName}}</span>
+                <span class="currentBalFontSize bankAccNoWidth currentBalDisplay ellipsis">{{currentBal.accountNumber}}</span>
             </div>
             <div class="dark item item-icon-left">
                 <i class="ionicIconSize iconShift fa fa-inr"></i>
-                <span class="errorSuccessTextAlign currentAmountWidth currentBalFontSize">{{currentBal.currentAmount}}</span>
+                <span class="errorSuccessTextAlign currentAmountWidth currentBalDisplay currentBalFontSize">{{currentBal.currentAmount}}</span>
             </div>
         </div>
         <div class="row" ng-if="currentBalInfo.length>0">
