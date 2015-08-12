@@ -38,21 +38,29 @@
     padding-left: 8px;
 }
 
-.bankNameWidth {
-    width: 30%;
+.currentBalDisplay {
     display: inline-block;
     padding-left: 10px;
+}
+
+.bankNameWidth {
+    width: 30%;  
+}
+
+.branchNameWidth {
+    width: 60%;
+}
+
+.branchTitleWidth {
+    width: 34%;
 }
 
 .bankAccNoWidth {
     width: 55%;
-    display: inline-block;
-    padding-left: 10px;
 }
 
 .currentAmountWidth {
     width: 50%;
-    display: inline-block;
     padding-left: 22px;
 }
 
@@ -72,6 +80,22 @@
     position: relative;
     opacity: 0.8;
 }
+
 .cardBoxShadowCustom {
     box-shadow: 0 8px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.modalBackDrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.verticalAlign {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
