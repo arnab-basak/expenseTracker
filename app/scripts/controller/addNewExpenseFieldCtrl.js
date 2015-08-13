@@ -19,6 +19,8 @@ angular.module('expenseTracker')
                     'checked': true,
                     'inputType': 'number'
                 });
+
+                $scope.newExpenseField = {};
             };
 
             $scope.expenseFieldShow = function(index) {
