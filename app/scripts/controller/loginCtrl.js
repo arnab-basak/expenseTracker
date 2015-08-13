@@ -1,22 +1,32 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('loginCtrl', function(authentication, $scope) {
+    .controller('loginCtrl', function(authentication, localStorage, $scope) {
         $scope.login = {};
-        
+        $scope.form = {};
+
         $scope.loginError = false;
 
         $scope.appLogin = function() {
-            $scope.loginError = false;
-
             var userName = $scope.login.userName;
             var password = $scope.login.password;
 
             authentication.login(userName, password);
 
-            if (sessionStorage.error) {
+            if (localStorage.get('error') !== undefined) {
                 $scope.loginError = true;
+                $scope.errorMessage = localStorage.get('error');
             }
 
+            if (!$scope.loginError) {
+                clearForm();
+            }
+
+        };
+
+        var clearForm = function() {
+            $scope.form.loginForm.$setPristine();
+            $scope.login = {};
+            $scope.loginError = false;
         };
 
     });

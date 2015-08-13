@@ -13,6 +13,9 @@ angular.module('expenseTracker')
     },
     getObject: function(key) {
       return JSON.parse($window.localStorage[key]);
+    },
+    remove: function(key) {
+      return $window.localStorage.removeItem(key);
     }
   };
 }]);

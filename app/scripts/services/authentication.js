@@ -11,14 +11,13 @@ angular.module('expenseTracker')
                 password: password
             }, function(error, authData) {
                 if (error) {
-                    sessionStorage.error = true;
+                    localStorage.set('error', error);
                     return error;
                 } else {
                     userData = authData;
-                    sessionStorage.error = false;
-
+                    localStorage.remove('error');
+                    console.log("REMOVE:", localStorage.get('error'));
                     localStorage.set('authenticationData', authData.uid);
-                    console.log ('LOGIN DATA', localStorage.get('authenticationData'));
 
                     $state.go('app.currentBalInfo');
 
@@ -30,8 +29,7 @@ angular.module('expenseTracker')
         factory.logout = function() {
             var ref = new Firebase(BASE_URL);
             ref.unauth();
-            localStorage.set('authenticationData', undefined);
-            console.log ('LOGOUT DATA', localStorage.get('authenticationData'));
+            localStorage.remove('authenticationData');
             $state.go('app.login');
         };
 

@@ -1,7 +1,7 @@
 'use strict';
 angular.module('expenseTracker')
     .controller('currentBalInfoCtrl', function(localStorage, $state, commonCalls, $scope, $ionicModal) {
-        if (localStorage.get('authenticationData') === 'undefined') {
+        if (localStorage.get('authenticationData') === undefined) {
             $state.go('app.login');
         } else {
             $scope.currentBalInfo = {};
