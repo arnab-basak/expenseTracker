@@ -56,7 +56,6 @@ angular.module('expenseTracker')
             var bankType={};
             $http.get(BANK_TYPE_URL).success(function(response) {
                 bankType.type = response;
-                console.log(bankType);
             });
 
 
