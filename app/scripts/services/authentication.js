@@ -1,6 +1,6 @@
 'use strict';
 angular.module('expenseTracker')
-    .factory('authentication', ['$ionicLoading','localStorage','BASE_URL', '$firebaseAuth', '$state', function($ionicLoading, localStorage, BASE_URL, $firebaseAuth, $state) {
+    .factory('authentication', ['$ionicLoading', 'localStorage', 'BASE_URL', '$firebaseAuth', '$state', function($ionicLoading, localStorage, BASE_URL, $firebaseAuth, $state) {
         var factory = {};
 
         factory.login = function(userName, password) {
@@ -16,7 +16,6 @@ angular.module('expenseTracker')
                 } else {
                     userData = authData;
                     localStorage.remove('error');
-                    console.log("REMOVE:", localStorage.get('error'));
                     localStorage.set('authenticationData', authData.uid);
 
                     $state.go('app.currentBalInfo');
@@ -28,9 +27,12 @@ angular.module('expenseTracker')
 
         factory.logout = function() {
             var ref = new Firebase(BASE_URL);
-            ref.unauth();
+            ref.unauth()
             localStorage.remove('authenticationData');
+            localStorage.remove('error');
+            localStorage.remove('selectedDate');
             $state.go('app.login');
+
         };
 
         return factory;

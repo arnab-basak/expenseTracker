@@ -1,7 +1,7 @@
 'use strict';
 angular.module('expenseTracker')
     .controller('calendarCtrl', function($state, $scope, localStorage) {
-        if (localStorage.get('authenticationData') === 'undefined') {
+        if (localStorage.get('authenticationData') === undefined) {
             $state.go('app.login');
         } else {
             $scope.currentDate = new Date();

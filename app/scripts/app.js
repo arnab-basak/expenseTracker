@@ -1,7 +1,7 @@
 'use strict';
 angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker', 'ui.mask'])
 
-.run(function($ionicPlatform, $rootScope, authentication, $ionicLoading) {
+.run(function($ionicPlatform, $rootScope, localStorage, authentication, $ionicLoading) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -16,6 +16,7 @@ angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker', 'ui.m
         }
     });
 
+    //LOGOUT FUNCTIONALITY
     $rootScope.logout = function() {
         authentication.logout();
     };
@@ -35,6 +36,12 @@ angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker', 'ui.m
     $rootScope.$on('loading:hide', function() {
         $ionicLoading.hide()
     });
+
+
+    //Setting LocalStorage to empty
+    localStorage.remove('authenticationData');
+    localStorage.remove('error');
+    localStorage.remove('selectedDate');
 
 })
 

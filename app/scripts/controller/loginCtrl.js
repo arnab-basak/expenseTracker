@@ -15,11 +15,14 @@ angular.module('expenseTracker')
             if (localStorage.get('error') !== undefined) {
                 $scope.loginError = true;
                 $scope.errorMessage = localStorage.get('error');
+            } else {
+                $scope.loginError = false;
+                $scope.errorMessage;
             }
 
-            if (!$scope.loginError) {
+            /*if (!$scope.loginError) {
                 clearForm();
-            }
+            }*/
 
         };
 
