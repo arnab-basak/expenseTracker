@@ -11,7 +11,7 @@
         </ion-list>
         <div class="card cardBoxShadowCustom">
             <ion-list>
-                <form name="addBankDetailsForm" novalidate>
+                <form name="form.addBankDetailsForm" novalidate>
                     <ion-item>
                         <div class="list">
                             <label class="item item-input">
@@ -45,9 +45,14 @@
                 </form>
             </ion-list>
         </div>
-        <div class="card cardBoxShadowCustom" ng-if="addBankDetailsForm.$invalid && addbankDetailsForm.$touched">
+        <div class="card cardBoxShadowCustom" ng-if="form.addBankDetailsForm.$invalid && form.addbankDetailsForm.$touched">
             <ion-item>
                 <div ng-include="'../views/templates/fillAllFields.html'"></div>
+            </ion-item>
+        </div>
+        <div class="card cardBoxShadowCustom" ng-if="addBankDetailsSuccess && form.addBankDetailsForm.$pristine">
+            <ion-item>
+                <div ng-include="'../views/templates/successTemplate.html'"></div>
             </ion-item>
         </div>
         <div class="row">
@@ -59,7 +64,6 @@
                 </div>
             </div>
         </div>
-
         <!-- BANK DETAILS LIST THAT ARE ADDED -->
         <!-- <ion-list ng-if="bankDetails.length>0">
             <ion-item class="item item-divider">

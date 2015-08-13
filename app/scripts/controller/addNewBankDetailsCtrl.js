@@ -4,8 +4,11 @@ angular.module('expenseTracker')
         if (localStorage.get('authenticationData') === 'undefined') {
             $state.go('app.login');
         } else {
+            $scope.form = {};
             $scope.addBankDetails = {};
             $scope.bankName = [];
+
+            $scope.addBankDetailsSuccess = false;
 
             $scope.onlyNumbers = ONLY_NUMBERS_REGEX;
 
@@ -22,8 +25,10 @@ angular.module('expenseTracker')
                     'currentAmount': $scope.addBankDetails.currentAmount,
                     'checked': true
                 });
+                
+                $scope.addBankDetailsSuccess = true;
 
-                clearForm(addBankDetailsForm);
+                clearForm();
             };
 
             $scope.confirmBankDetails = function() {
@@ -58,8 +63,9 @@ angular.module('expenseTracker')
             });
 
 
-            var clearForm = function(addBankDetailsForm) {
-                addBankDetailsForm.$setPristine();
+            var clearForm = function() {
+                $scope.form.addBankDetailsForm.$setPristine();
+                $scope.addBankDetails = {};
             }
         }
     });
