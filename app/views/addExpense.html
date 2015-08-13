@@ -11,13 +11,16 @@
         </ion-list>
         <!-- Adding Expense Details Section -->
         <div class="card cardBoxShadowCustom" ng-if="expenseType.length>0 && bankDetails.length > 0">
-            <form name="addExpenseForm">
+            <form name="form.addExpenseForm">
                 <ion-list>
                     <div class="row">
                         <div class="col">
                             <div class="list" ng-repeat="data in expenseType track by $index" ng-if="data.checked">
-                                <label class="item item-input" ng-class="{ 'has-errors' : addExpenseForm.{{data.expenseType}}.$invalid, 'no-errors' : addExpenseForm.{{data.expenseType}}.$valid}">
-                                    <input type="{{data.inputType}}" name="{{data.expenseType}}" placeholder="{{data.expenseTypeName}}" ng-model="addExpenseTypeData[$index]" ng-pattern="onlyNumbers();">
+                                <label class="item item-input">
+                                    <input ng-if="data.expenseType !== 'Date'" type="{{data.inputType}}" name="{{data.expenseType}}" placeholder="{{data.expenseTypeName}}" ng-model="addExpenseTypeData[$index]" ng-pattern="onlyNumbers();">
+                                    <label ng-if="data.expenseType === 'Date'" class="item item-input">
+                                        <span class="dateDisplayAdjust">Expense Date: {{addExpenseTypeDate}}</span>
+                                    </label>
                                 </label>
                             </div>
                         </div>
@@ -36,13 +39,12 @@
         <div class="row" ng-if="expenseType.length>0 && bankDetails.length > 0">
             <div class="col">
                 <div class="padding">
-                    <button class="button button-royal button-block" ng-click="addExpenseToDB()">
+                    <button class="button button-royal button-block" ng-click="confirmExpenditure()">
                         Submit
                     </button>
                 </div>
             </div>
         </div>
-
         <!-- No Expense Type Exists Section -->
         <div class="card cardBoxShadowCustom" ng-if="expenseType.length===0 && bankDetails.length > 0">
             <ion-list>
@@ -56,7 +58,6 @@
                 <a class="button button-royal button-block" href="#/app/addNewExpenseField">Add New Expense Type</a>
             </div>
         </div>
-
         <!-- No Bank Details Exists Section -->
         <div class="card" ng-if="bankDetails.length===0">
             <ion-list>
