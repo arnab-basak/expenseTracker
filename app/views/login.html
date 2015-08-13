@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="card cardBoxShadowCustom">
-            <form name="loginForm" novalidate>
+            <form name="form.loginForm" novalidate>
                 <ion-list>
                     <div class="row">
                         <div class="col">
@@ -26,14 +26,11 @@
                 </ion-list>
             </form>
         </div>
-        <div class="card cardBoxShadowCustom" ng-if="(loginForm.username.$invalid && loginForm.username.$touched)||loginError">
+        <div class="card cardBoxShadowCustom" ng-if="loginError">
             <ion-list>
                 <div class="row">
-                    <div class="col" ng-if="loginError">
+                    <div class="col">
                         <div ng-include="'../views/templates/loginError.html'"></div>
-                    </div>
-                    <div class="col" ng-if="loginForm.username.$invalid && loginForm.username.$touched">
-                        <div ng-include="'../views/templates/invalidEmail.html'"></div>
                     </div>
                 </div>
             </ion-list>
