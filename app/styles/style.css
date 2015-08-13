@@ -74,6 +74,14 @@
     padding-left: 22px;
 }
 
+.expenseDateWidth {
+    width: 50%;
+}
+
+.expenseTypeWidth {
+    width: 50%;
+}
+
 .ellipsis {
     vertical-align: sub;
     text-overflow: ellipsis;
@@ -108,4 +116,7 @@
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+}
+.dateDisplayAdjust {
+    margin-left: -16px;
 }
