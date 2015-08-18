@@ -3,10 +3,9 @@ angular.module('expenseTracker')
     .controller('createUserCtrl', function(BASE_URL, $scope, $firebaseAuth) {
         $scope.createUser = {};
 
-        $scope.createUserSuccess = false;
-        $scope.passwordError = false;
-        $scope.userExists = false;
-        $scope.createUserForm = {};
+        $scope.createUserSuccess;
+        $scope.createUserError;
+        $scope.form = {};
 
         $scope.addUser = function() {
 
@@ -19,19 +18,17 @@ angular.module('expenseTracker')
                         password: $scope.createUser.password
                     })
                     .then(function() {
-                        $scope.userExists = false;
-                        $scope.passwordError = false;
-                        $scope.createUserSuccess = true;
+                        $scope.createUserError;
+                        $scope.createUserSuccess = 'Success: User created successfully';
                     })
                     .catch(function() {
-                        $scope.passwordError = false;
-                        $scope.createUserSuccess = false;
-                        $scope.userExists = true;
+                        $scope.createUserSuccess;
+                        $scope.createUserError = 'Error: The username already exists';
                     });
             } else {
-                $scope.createUserSuccess = false;
-                $scope.userExists = false;
-                $scope.passwordError = true;
+                $scope.createUserSuccess;
+                $scope.createUserError = 'Error: The passwords mismatch';
             }
         };
+
     });
