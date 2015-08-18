@@ -1,36 +1,46 @@
 <ion-view title="Create New User">
+    <div class="bg"></div>
     <ion-content class="has-header">
-        <ion-list>
-            <ion-item>
-                <form name="createUserForm" ng-submit="addUser()" novalidate>
-                    <div class="list">
-                        <label class="item item-input">
-                            <input type="email" name="userName" placeholder="Username" ng-model="createUser.userName" required>
-                        </label>
-                    </div>
-                    <div class="list">
-                        <label class="item item-input">
-                            <input type="password" name="password" placeholder="password" minlength = "8" ng-model="createUser.password" required>
-                        </label>
-                        <label class="item item-input">
-                            <input type="password" placeholder="Confirm Password" ng-model="createUser.confirmPassword" required>
-                        </label>
-                        <div ng-if="passwordError" ng-include="'../views/templates/passwordMismatchError.html'"></div>
-                        <div ng-if="createUserSuccess" ng-include="'../views/templates/createUserSuccess.html'"></div>
-                        <div ng-if="userExists" ng-include="'../views/templates/userExists.html'"></div>
-                        <div ng-if="createUserForm.userName.$touched && createUserForm.userName.$invalid" ng-include="'../views/templates/invalidEmail.html'"></div>
-                        <div ng-if="createUserForm.password.$touched && createUserForm.password.$invalid" ng-include="'../views/templates/invalidPassword.html'"></div>
-                    </div>
-                    <div class="padding">
-                        <button class="button button-dark button-block" ng-disabled="createUserForm.$invalid">
-                            Create User
-                        </button>
-                        <p class="text-center">
-                            <a class="linkNoDecoration" href="#/app/login">Already A User? Login</a>
-                        </p>
-                    </div>
-                </form>
-            </ion-item>
-        </ion-list>
+        <div class="card cardBoxShadowCustom">
+            <div class="item item-text-wrap">
+                <i class="icon ion-android-person ionicIconSize"></i>&nbsp;&nbsp; Create User
+            </div>
+        </div>
+        <div class="card cardBoxShadowCustom">
+            <form name="form.createUserForm" ng-submit="addUser()" novalidate>
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="email" name="userName" placeholder="Username" ng-model="createUser.userName" required>
+                    </label>
+                </div>
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="password" name="password" placeholder="password" minlength="8" ng-model="createUser.password" required>
+                    </label>
+                    <label class="item item-input">
+                        <input type="password" placeholder="Confirm Password" ng-model="createUser.confirmPassword" required>
+                    </label>
+                </div>
+            </form>
+        </div>
+        <div class="card cardBoxShadowCustom" ng-if="createUserError!==undefined || createUserSuccess!==undefined">
+            <div class="row">
+                <div class="col">
+                    <div ng-include="'createUserStatusMessage'"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="padding">
+                    <button class="button button-positive button-block">
+                        Create User
+                    </button>
+                    <p class="text-center">
+                        <a class="linkNoDecoration" href="#/app/login">Already A User? Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
