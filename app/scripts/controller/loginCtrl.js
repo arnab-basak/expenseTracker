@@ -1,6 +1,6 @@
 'use strict';
 angular.module('expenseTracker')
-    .controller('loginCtrl', function(authentication, localStorage, $scope) {
+    .controller('loginCtrl', function(authentication, localStorage, $scope, $templateCache) {
         $scope.login = {};
         $scope.form = {};
 
