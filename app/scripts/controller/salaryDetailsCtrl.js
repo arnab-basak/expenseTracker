@@ -7,7 +7,7 @@ angular.module('expenseTracker')
             $scope.salaryDetails = {};
             $scope.totalAmount = 0;
 
-            $scope.salaryDetailsError = false;
+            $scope.salaryDetailsError;
 
             $scope.bankDetails = commonCalls.bankDetailsFbData();
             $scope.totalAmount = commonCalls.fetchTotalBankBalance();
@@ -18,7 +18,7 @@ angular.module('expenseTracker')
 
                 checkInput();
 
-                if ($scope.salaryDetailsError === false) {
+                if ($scope.salaryDetailsError === undefined) {
                     for (var i = 0; i < $scope.bankDetails.length; i++) {
                         if ($scope.salaryDetails.accountNumber === $scope.bankDetails[i].accountNumber) {
                             var id = $scope.bankDetails[i].$id;
@@ -36,7 +36,7 @@ angular.module('expenseTracker')
 
                                 break;
                             } else {
-                                $scope.salaryDetailsError = true;
+                                $scope.salaryDetailsError = 'Error: Unable to update';
                             }
                         }
                     }
@@ -46,18 +46,12 @@ angular.module('expenseTracker')
 
             var checkInput = function() {
                 if ($scope.salaryDetails.salaryAmount === undefined) {
-                    $scope.salaryAmountError = true;
-                    $scope.salaryDetailsError = true;
-                    $scope.accountNumberError = false;
+                    $scope.salaryDetailsError = 'Error: Please Enter The Salary Amount';
                 } else if (!$scope.salaryDetails.accountNumber) {
-                    $scope.salaryAmountError = false;
-                    $scope.accountNumberError = true;
-                    $scope.salaryDetailsError = true;
+                    $scope.salaryDetailsError = 'Error: Please Select A Bank';
                 }
                 else {
-                    $scope.accountNumberError = false;
-                    $scope.salaryAmountError = false;
-                    $scope.salaryDetailsError = false;
+                    $scope.salaryDetailsError;
                 }
             }
         }

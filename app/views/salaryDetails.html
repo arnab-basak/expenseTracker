@@ -31,9 +31,8 @@
                             </ion-radio>
                         </div>
                     </ion-item>
-                    <ion-item ng-if="salaryDetailsError">
-                        <div ng-if="salaryAmountError" ng-include="'../views/templates/salaryAmountError.html'"></div>
-                        <div ng-if="accountNumberError" ng-include="'../views/templates/selectBank.html'"></div>
+                    <ion-item ng-if="salaryDetailsError !== undefined">
+                        <div ng-if="salaryAmountError" ng-include="'salaryDetailsError'"></div>
                     </ion-item>
                     <ion-item>
                         <div class="padding">
