@@ -59,8 +59,7 @@ angular.module('expenseTracker', ['ionic', 'firebase', 'ionic-datepicker', 'ui.m
     //TEMPLATE CACHE FOR MESSAGE TEMPLATES
     $templateCache.put('loginError', '<div class="errorSuccessTemplate"> <i class="assertive ion-information-circled ionicIconSize"></i><span class="errorSuccessTextAlign">&nbsp;&nbsp;{{errorMessage}}</span> </div>');
     $templateCache.put('createUserStatusMessage', '<div class="errorSuccessTemplate templateFontSize" ng-if="createUserSuccess===undefined && createUserError !== undefined"> <i class="assertive ion-information-circled ionicIconSize"></i><span class="errorSuccessTextAlign">&nbsp;&nbsp;{{createUserError}}</span> </div> <div class="errorSuccessTemplate" ng-if="createUserSuccess!==undefined && createUserError === undefined"> <i class="balanced ion-checkmark-circled ionicIconSize"></i><span class="errorSuccessTextAlign">&nbsp;&nbsp;{{createUserSuccess}}</span> </div>');
-    $templateCache.put('salaryAmountError', '<div class="errorSuccessTemplate"> <i class="assertive ion-information-circled"></i><span class="errorSuccessTextAlign">&nbsp;&nbsp;Enter Salary Amount</span> </div>');
-    $templateCache.put('selectBank', '<div class="errorSuccessTemplate"> <i class="assertive ion-information-circled"></i><span class="errorSuccessTextAlign">&nbsp;&nbsp;Please Select A Bank</span> </div>');
+    $templateCache.put('salaryDetailsError', '<div class="errorSuccessTemplate"> <i class="assertive ion-information-circled"></i><span class="errorSuccessTextAlign">&nbsp;&nbsp;{{salaryDetailsError}}</span> </div>');
     $templateCache.put('noBankDetails', '<div class="errorSuccessTemplate"> <i class="assertive ion-information-circled ionicIconSize"></i><span class="errorSuccessTextAlign">&nbsp;&nbsp;Bank Details Not Found!</span> </div>');
 })
 
