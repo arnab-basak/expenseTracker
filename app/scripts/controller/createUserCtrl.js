@@ -7,9 +7,14 @@ angular.module('expenseTracker')
         $scope.createUserError;
         $scope.form = {};
 
+        $scope.removeStatusMsg = function() {
+            $scope.createUserError = undefined;
+            $scope.createUserSuccess = undefined;
+        };
+
         $scope.addUser = function() {
 
-            if ($scope.createUser.password === $scope.createUser.confirmPassword) {
+            if ($scope.createUser.password == $scope.createUser.confirmPassword) {
                 var ref = new Firebase(BASE_URL);
                 $scope.authObj = $firebaseAuth(ref);
 

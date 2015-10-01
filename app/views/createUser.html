@@ -10,15 +10,15 @@
             <form name="form.createUserForm" ng-submit="addUser()" novalidate>
                 <div class="list">
                     <label class="item item-input">
-                        <input type="email" name="userName" placeholder="Username" ng-model="createUser.userName" required>
+                        <input type="email" name="userName" placeholder="Username" ng-model="createUser.userName" ng-change="removeStatusMsg()" required>
                     </label>
                 </div>
                 <div class="list">
                     <label class="item item-input">
-                        <input type="password" name="password" placeholder="password" minlength="8" ng-model="createUser.password" required>
+                        <input type="password" name="password" placeholder="Password - Minimum 8 characters" minlength="8" ng-model="createUser.password" ng-change="removeStatusMsg()" required>
                     </label>
                     <label class="item item-input">
-                        <input type="password" placeholder="Confirm Password" ng-model="createUser.confirmPassword" required>
+                        <input type="password" placeholder="Confirm Password" ng-model="createUser.confirmPassword" ng-change="removeStatusMsg()" required>
                     </label>
                 </div>
             </form>
@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col">
                 <div class="padding">
-                    <button class="button button-positive button-block">
+                    <button class="button button-positive button-block" ng-click="addUser()">
                         Create User
                     </button>
                     <p class="text-center">
